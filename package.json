@@ -4,17 +4,22 @@
   "description": "Note that if you fork this repository, your responses may be publicly linked to this repo.   Please submit your application along with the solutions attached or linked.",
   "scripts": {
     "tsc": "tsc --init",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "problem4": "ts-node src/problem4/main.ts",
-    "problem5": "ts-node src/problem5/main.ts"
+    "problem5": "jest && ts-node src/problem5/main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
     "@types/lodash": "^4.17.20",
     "@types/node": "^24.1.0",
+    "@types/supertest": "^6.0.3",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
