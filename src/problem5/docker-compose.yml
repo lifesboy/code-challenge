@@ -1,0 +1,34 @@
+services:
+  database:
+    image: 'postgres:16'
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=problem5
+      - POSTGRES_PASSWORD=problem5
+      - POSTGRES_DB=problem5
+    networks:
+      - postgres-network
+    volumes:
+      - ${PWD}/db-data/:/var/lib/postgresql/data/
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 5433:80
+    environment:
+      - POSTGRES_USER=problem5
+      - POSTGRES_PASSWORD=problem5
+      - POSTGRES_DB=problem5
+      - PGADMIN_DEFAULT_EMAIL=problem5@problem5.local
+      - PGADMIN_DEFAULT_PASSWORD=problem5
+    depends_on:
+      - database
+    networks:
+      - postgres-network
+    volumes:
+      - ${PWD}/pgadmin-data/:/var/lib/pgadmin/
+
+networks:
+  postgres-network:
+    driver: bridge
