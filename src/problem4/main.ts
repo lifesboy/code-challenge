@@ -9,7 +9,12 @@ function sum_to_n_b(n: number): number {
 }
 
 function sum_to_n_c(n: number): number {
-    return n
+    let s = 0
+    do {
+        s += n
+    } while (--n > 0)
+
+    return s
 }
 
 console.log('Start')
