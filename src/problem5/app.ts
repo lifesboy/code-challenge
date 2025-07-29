@@ -2,20 +2,24 @@ import express, {Request, Response} from 'express'
 
 export const app = express()
 
-app.post('/', (req: Request, res: Response) => {
-  res.send('Hello from Express with TypeScript!')
+app.post('/api/user', (req: Request, res: Response) => {
+  res.send({data: {}})
 })
-app.get('/list', (req: Request, res: Response) => {
-  res.send('Hello from Express with TypeScript!')
+
+app.get('/api/user/list', (req: Request, res: Response) => {
+  res.send({data: []})
 })
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello from Express with TypeScript!')
+
+app.get('/api/user/:id', (req: Request, res: Response) => {
+  res.send({data: {}})
 })
-app.put('/', (req: Request, res: Response) => {
-  res.send('Hello from Express with TypeScript!')
+
+app.put('/api/user/:id', (req: Request, res: Response) => {
+  res.send({data: {}})
 })
-app.delete('/', (req: Request, res: Response) => {
-  res.send('Hello from Express with TypeScript!')
+
+app.delete('/api/user/:id', (req: Request, res: Response) => {
+  res.send({data: true})
 })
 
 module.exports = {
