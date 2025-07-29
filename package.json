@@ -1,0 +1,17 @@
+{
+  "name": "code-challenge",
+  "version": "1.0.0",
+  "description": "Note that if you fork this repository, your responses may be publicly linked to this repo.   Please submit your application along with the solutions attached or linked.",
+  "scripts": {
+    "tsc": "tsc --init",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "problem4": "ts-node src/problem4/main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
