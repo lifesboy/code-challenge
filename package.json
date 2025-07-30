@@ -5,8 +5,9 @@
   "scripts": {
     "tsc": "tsc --init",
     "test": "jest",
-    "build": "tsc",
-    "migrate": "ts-node src/problem5/db/migrations/20250730011904-create-user.ts",
+    "build": "tsc src/problem5/db/migrations/*.ts --outDir src/problem5/db/migrations/compiled",
+    "migrate": "npx sequelize-cli-typescript db:migrate",
+    "migrate:undo:all": "npx sequelize-cli-typescript db:migrate:undo:all",
     "problem4": "ts-node src/problem4/main.ts",
     "problem5": "jest && ts-node src/problem5/main.ts"
   },
