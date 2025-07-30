@@ -29,3 +29,5 @@ docker compose -f src/problem5/docker-compose.yml up --force-recreate
 ```
 npm run problem5:clean:test:run
 ```
+### Problem 6: Architecture
+- Score hub module [here](src/problem6/readme.md)
