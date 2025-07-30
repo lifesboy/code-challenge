@@ -23,3 +23,14 @@ export async function deleteById(id: number) {
     where: {id},
   })
 }
+
+export async function search(filters?: any, paging?: { page: number, limit: number }) {
+  const limit = paging?.limit ?? 100
+  const offset = (paging?.page || 0) * limit
+
+  return await repository.findAndCountAll({
+    where: filters,
+    offset,
+    limit,
+  })
+}

@@ -13,8 +13,15 @@ app.post('/api/user', async (req: Request, res: Response) => {
   res.send({data: user})
 })
 
-app.get('/api/user/list', (req: Request, res: Response) => {
-  res.send({data: []})
+app.get('/api/user/search', async (req: Request, res: Response) => {
+  const searchResults = await UserRepository.search()
+
+  res.send({
+    data: {
+      count: searchResults?.count || 0,
+      rows: searchResults?.rows || [],
+    }
+  })
 })
 
 app.get('/api/user/:id', async (req: Request, res: Response) => {

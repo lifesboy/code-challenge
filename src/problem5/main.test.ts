@@ -13,10 +13,17 @@ describe('User API', () => {
     expect(res.body?.data?.lastName).toEqual(userData.lastName)
   })
 
-  it('should get all users', async () => {
-    const res = await request(app).get('/api/user/list')
+  it('should get filtered users', async () => {
+    const userRes = await request(app).post('/api/user')
+      .send(userData)
+    const userId = +userRes.body?.data?.id
+    expect(userId).toBeGreaterThan(0)
+
+    const res = await request(app).get('/api/user/search')
+
     expect(res.statusCode).toEqual(200)
-    expect(res.body).toEqual({data: []})
+    expect(res.body?.data?.count).toBeGreaterThan(0)
+    expect(res.body?.data?.rows).toBeTruthy()
   })
 
   it('should get detail user', async () => {
