@@ -1,0 +1,40 @@
+defaults: &defaults
+  api:
+    port: 3000
+
+  secret:
+    path:
+
+  logger:
+    name: service-user
+    level: debug
+    levels:
+      trace: STDOUT
+      debug: STDOUT
+      info: STDOUT
+      warn: STDOUT
+      error: STDERR
+      fatal: STDERR
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+  secret:
+    path: /run/secrets/
+
+  logger:
+    name: service-user
+    level: debug
+    levels:
+      trace: STDOUT
+      debug: STDOUT
+      info: STDOUT
+      warn: STDOUT
+      error: STDERR
+      fatal: STDERR
