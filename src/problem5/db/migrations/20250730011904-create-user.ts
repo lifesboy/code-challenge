@@ -11,10 +11,12 @@ export = {
       },
 
       firstName: {
+        allowNull: true,
         type: Sequelize.STRING
       },
 
       lastName: {
+        allowNull: true,
         type: Sequelize.STRING
       },
 

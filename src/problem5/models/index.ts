@@ -11,6 +11,7 @@ const sequelize = new Sequelize({
   port: config.port,
   dialect: config.dialect,
   models: [__dirname + '/**/*.model.ts'], // or [Player, Team],
+  repositoryMode: true,
 })
 
 export default sequelize
