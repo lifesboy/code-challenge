@@ -1,3 +1,4 @@
+import {Op} from 'sequelize'
 import User from "../models/user.model"
 import sequelize from '../models'
 
@@ -24,12 +25,18 @@ export async function deleteById(id: number) {
   })
 }
 
-export async function search(filters?: any, paging?: { page: number, limit: number }) {
+export async function search(filter?: { keyword?: string }, paging?: { page: number, limit: number }) {
   const limit = paging?.limit ?? 100
   const offset = (paging?.page || 0) * limit
+  const where = !!filter?.keyword ? {
+    [Op.or]: [
+      {firstName: {[Op.like]: `%${filter?.keyword}%`}},
+      {lastName: {[Op.like]: `%${filter?.keyword}%`}},
+    ],
+  } : undefined
 
   return await repository.findAndCountAll({
-    where: filters,
+    where,
     offset,
     limit,
   })

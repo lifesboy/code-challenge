@@ -14,7 +14,8 @@ app.post('/api/user', async (req: Request, res: Response) => {
 })
 
 app.get('/api/user/search', async (req: Request, res: Response) => {
-  const searchResults = await UserRepository.search()
+  const keyword = `${req.query?.keyword || ''}`
+  const searchResults = await UserRepository.search({keyword})
 
   res.send({
     data: {

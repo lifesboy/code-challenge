@@ -1,5 +1,6 @@
 import request from 'supertest'
 import {app} from './app'
+import * as _ from 'lodash'
 
 describe('User API', () => {
   const userData = {firstName: 'firstName', lastName: 'lastName'}
@@ -20,10 +21,16 @@ describe('User API', () => {
     expect(userId).toBeGreaterThan(0)
 
     const res = await request(app).get('/api/user/search')
+      .query({keyword: userData.firstName})
+
+    const filteredRows = _.filter(res.body?.data?.rows,
+      (i: any) => (i.firstName?.indexOf(userData.firstName) >= 0)
+        || (i.lastName?.indexOf(userData.firstName) >= 0))
 
     expect(res.statusCode).toEqual(200)
     expect(res.body?.data?.count).toBeGreaterThan(0)
     expect(res.body?.data?.rows).toBeTruthy()
+    expect(res.body?.data?.rows).toEqual(filteredRows)
   })
 
   it('should get detail user', async () => {
