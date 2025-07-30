@@ -1,32 +1,33 @@
 "use strict";
+var sequelize_1 = require("sequelize");
 module.exports = {
-  up: function (queryInterface, Sequelize) {
+  up: function (queryInterface) {
     return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: sequelize_1.DataTypes.INTEGER
       },
       firstName: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: sequelize_1.DataTypes.STRING
       },
       lastName: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: sequelize_1.DataTypes.STRING
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: sequelize_1.DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: sequelize_1.DataTypes.DATE
       }
     });
   },
-  down: function (queryInterface, Sequelize) {
+  down: function (queryInterface) {
     return queryInterface.dropTable('Users');
   }
 };

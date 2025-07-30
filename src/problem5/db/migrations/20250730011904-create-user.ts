@@ -1,38 +1,38 @@
-import {QueryInterface, SequelizeStatic} from 'sequelize';
+import {DataTypes, QueryInterface} from 'sequelize'
 
 export = {
-  up: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  up: (queryInterface: QueryInterface) => {
     return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
 
       firstName: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
 
       lastName: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
 
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
 
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },
 
-  down: (queryInterface: QueryInterface, Sequelize: SequelizeStatic) => {
+  down: (queryInterface: QueryInterface) => {
     return queryInterface.dropTable('Users');
   }
 };

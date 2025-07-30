@@ -5,11 +5,14 @@
   "scripts": {
     "tsc": "tsc --init",
     "test": "jest",
-    "build": "tsc src/problem5/db/migrations/*.ts --outDir src/problem5/db/migrations/compiled",
-    "migrate": "npx sequelize-cli-typescript db:migrate",
-    "migrate:undo:all": "npx sequelize-cli-typescript db:migrate:undo:all",
     "problem4": "ts-node src/problem4/main.ts",
-    "problem5": "jest && ts-node src/problem5/main.ts"
+    "problem5:build": "tsc src/problem5/db/migrations/*.ts --outDir src/problem5/db/migrations/compiled",
+    "problem5:migrate": "npm run problem5:build && npx sequelize-cli-typescript db:migrate",
+    "problem5:migrate:undo:all": "npm run problem5:build && npx sequelize-cli-typescript db:migrate:undo:all",
+    "problem5:clean": "npm run problem5:migrate:undo:all",
+    "problem5:test": "npm run problem5:migrate && jest && npm run problem5:migrate:undo:all",
+    "problem5:run": "npm run problem5:migrate && ts-node src/problem5/main.ts",
+    "problem5:clean:test:run": "npm run problem5:clean && npm run problem5:test && npm run problem5:run"
   },
   "keywords": [],
   "author": "",
