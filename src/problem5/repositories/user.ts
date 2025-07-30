@@ -17,3 +17,9 @@ export async function updateById(id: number, data: Partial<User>) {
     returning: true,
   })
 }
+
+export async function deleteById(id: number) {
+  return await repository.destroy({
+    where: {id},
+  })
+}

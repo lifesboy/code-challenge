@@ -32,8 +32,10 @@ app.put('/api/user/:id', async (req: Request, res: Response) => {
   res.send({data: user && user[1] && user[1][0]})
 })
 
-app.delete('/api/user/:id', (req: Request, res: Response) => {
-  res.send({data: true})
+app.delete('/api/user/:id', async (req: Request, res: Response) => {
+  const deletedCount = await UserRepository.deleteById(+req.params?.id)
+
+  res.send({data: deletedCount > 0})
 })
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

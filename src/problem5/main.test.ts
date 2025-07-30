@@ -52,8 +52,13 @@ describe('User API', () => {
   })
 
   it('should delete existed user', async () => {
-    const res = await request(app).delete('/api/user/1')
+    const userRes = await request(app).post('/api/user')
+      .send(userData)
+    const userId = +userRes.body?.data?.id
+    expect(userId).toBeGreaterThan(0)
+
+    const res = await request(app).delete(`/api/user/${userId}`)
     expect(res.statusCode).toEqual(200)
-    expect(res.body).toEqual({data: true})
+    expect(res.body?.data).toEqual(true)
   })
 })
