@@ -17,8 +17,10 @@ app.get('/api/user/list', (req: Request, res: Response) => {
   res.send({data: []})
 })
 
-app.get('/api/user/:id', (req: Request, res: Response) => {
-  res.send({data: {}})
+app.get('/api/user/:id', async (req: Request, res: Response) => {
+  const user = await UserRepository.getById(+req.params?.id)
+
+  res.send({data: user})
 })
 
 app.put('/api/user/:id', (req: Request, res: Response) => {

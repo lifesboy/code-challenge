@@ -6,3 +6,7 @@ const repository = sequelize.getRepository(User)
 export async function create(data: Partial<User>) {
   return await repository.create(data)
 }
+
+export async function getById(id: number) {
+  return await repository.findByPk(id)
+}

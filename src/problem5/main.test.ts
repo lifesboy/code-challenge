@@ -20,8 +20,9 @@ describe('User API', () => {
 
   it('should get detail user', async () => {
     const res = await request(app).get('/api/user/1')
+
     expect(res.statusCode).toEqual(200)
-    expect(res.body).toEqual({data: {}})
+    expect(res.body?.data?.id).toEqual(1)
   })
 
   it('should update existed user', async () => {
