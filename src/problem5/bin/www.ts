@@ -8,7 +8,7 @@ import {AddressInfo} from 'net'
 
 export const app = api
 const port = config.api.port || 3000
-app.set('port', config.api.port || 3000)
+app.set('port', port)
 
 export const server = http.createServer(app)
 
