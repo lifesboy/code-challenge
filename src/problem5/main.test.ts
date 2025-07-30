@@ -3,10 +3,13 @@ import {app} from './app'
 
 describe('User API', () => {
   it('should create new user', async () => {
+    const userData = {firstName: 'firstName', lastName: 'lastName'}
     const res = await request(app).post('/api/user')
-      .send({})
+      .send(userData)
+
     expect(res.statusCode).toEqual(200)
-    expect(res.body).toEqual({data: {}})
+    expect(res.body?.data?.firstName).toEqual(userData.firstName)
+    expect(res.body?.data?.lastName).toEqual(userData.lastName)
   })
 
   it('should get all users', async () => {
