@@ -1,13 +1,25 @@
 import * as _ from 'lodash'
 
+/**
+ * Complexity: O(n)
+ * @param n
+ */
 function sum_to_n_a(n: number): number {
     return _.sum(_.range(1, n + 1))
 }
 
+/**
+ * Complexity: O(1)
+ * @param n
+ */
 function sum_to_n_b(n: number): number {
     return n * (n + 1) / 2
 }
 
+/**
+ * Complexity: O(n)
+ * @param n
+ */
 function sum_to_n_c(n: number): number {
     let s = 0
     do {
