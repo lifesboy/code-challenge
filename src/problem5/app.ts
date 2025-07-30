@@ -23,8 +23,13 @@ app.get('/api/user/:id', async (req: Request, res: Response) => {
   res.send({data: user})
 })
 
-app.put('/api/user/:id', (req: Request, res: Response) => {
-  res.send({data: {}})
+app.put('/api/user/:id', async (req: Request, res: Response) => {
+  const user = await UserRepository.updateById(+req.params?.id, {
+    firstName: req.body?.firstName ?? undefined,
+    lastName: req.body?.lastName ?? undefined,
+  })
+
+  res.send({data: user && user[1] && user[1][0]})
 })
 
 app.delete('/api/user/:id', (req: Request, res: Response) => {

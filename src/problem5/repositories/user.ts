@@ -10,3 +10,10 @@ export async function create(data: Partial<User>) {
 export async function getById(id: number) {
   return await repository.findByPk(id)
 }
+
+export async function updateById(id: number, data: Partial<User>) {
+  return await repository.update(data, {
+    where: {id},
+    returning: true,
+  })
+}

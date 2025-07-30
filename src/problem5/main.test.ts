@@ -32,10 +32,23 @@ describe('User API', () => {
   })
 
   it('should update existed user', async () => {
-    const res = await request(app).put('/api/user/1')
-      .send({})
+    const userRes = await request(app).post('/api/user')
+      .send(userData)
+    const userId = +userRes.body?.data?.id
+    expect(userId).toBeGreaterThan(0)
+
+    const updateUserData = {
+      ...userData,
+      firstName: 'firstName_updated',
+      lastName: 'lastName_updated'
+    }
+    const res = await request(app).put(`/api/user/${userId}`)
+      .send(updateUserData)
+
     expect(res.statusCode).toEqual(200)
-    expect(res.body).toEqual({data: {}})
+    expect(res.body?.data?.id).toEqual(userId)
+    expect(res.body?.data?.firstName).toEqual(updateUserData.firstName)
+    expect(res.body?.data?.lastName).toEqual(updateUserData.lastName)
   })
 
   it('should delete existed user', async () => {
