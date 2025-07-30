@@ -1,10 +1,11 @@
-import express, {Request, Response} from 'express'
+import express, {NextFunction, Request, Response} from 'express'
 import * as UserRepository from './repositories/user'
 
 export const app = express()
 
 app.post('/api/user', async (req: Request, res: Response) => {
   const user = await UserRepository.create({})
+
   res.send({data: user})
 })
 
@@ -22,4 +23,9 @@ app.put('/api/user/:id', (req: Request, res: Response) => {
 
 app.delete('/api/user/:id', (req: Request, res: Response) => {
   res.send({data: true})
+})
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack)
+  res.status(500).send({error: err})
 })
