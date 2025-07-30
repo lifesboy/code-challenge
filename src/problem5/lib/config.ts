@@ -5,7 +5,7 @@ import * as yamlConfig from 'node-yaml-config'
 export interface LoggerConfig {
   name: string
   level: string
-  levels: {[key: string]: string} & {
+  levels: { [key: string]: string } & {
     trace: string
     debug: string
     info: string
