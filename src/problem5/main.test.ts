@@ -2,8 +2,9 @@ import request from 'supertest'
 import {app} from './app'
 
 describe('User API', () => {
+  const userData = {firstName: 'firstName', lastName: 'lastName'}
+
   it('should create new user', async () => {
-    const userData = {firstName: 'firstName', lastName: 'lastName'}
     const res = await request(app).post('/api/user')
       .send(userData)
 
@@ -19,10 +20,15 @@ describe('User API', () => {
   })
 
   it('should get detail user', async () => {
-    const res = await request(app).get('/api/user/1')
+    const userRes = await request(app).post('/api/user')
+      .send(userData)
+    const userId = +userRes.body?.data?.id
+    expect(userId).toBeGreaterThan(0)
+
+    const res = await request(app).get(`/api/user/${userId}`)
 
     expect(res.statusCode).toEqual(200)
-    expect(res.body?.data?.id).toEqual(1)
+    expect(res.body?.data?.id).toEqual(userId)
   })
 
   it('should update existed user', async () => {
