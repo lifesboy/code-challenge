@@ -22,5 +22,9 @@
         - F1: Repeat syncing new Score vs User data
         - F2: Repeat rendering Board Screen with new synced data 
 2. Score Store (Storage service)
+    1. User score store
+        - F1: Increase user score by userId
+    2. Board score store
+        - F1: Get/Set a user score item {userId, score} at slot n (n as key: 1 - 10) 
 3. Score Hub (API service)
     
