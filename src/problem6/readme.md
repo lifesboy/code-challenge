@@ -37,4 +37,4 @@
         - F1: Compare a user score item to overwrite greater score item at slot n
         - F2: Dispatch action to update next slot with overwritten item at previous slot
         - F3: Looping to insert a score item into top 10 slots by a dispatch action
-        - F3: Receive api request to fetch latest top 10 score items from top 10 slots
+        - F4: Receive api request to fetch latest top 10 score items from top 10 slots
