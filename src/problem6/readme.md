@@ -27,4 +27,14 @@
     2. Board score store
         - F1: Get/Set a user score item {userId, score} at slot n (n as key: 1 - 10) 
 3. Score Hub (API service)
-    
+    1. Authentication
+        - F1: Verify api key
+    2. User score
+        - F1: Receive api request to increase user score by n
+        - F2: Update to Score Store (2.1.F1)
+        - F3: Dispatch action to up date Board score
+    3. Board score
+        - F1: Compare a user score item to overwrite greater score item at slot n
+        - F2: Dispatch action to update next slot with overwritten item at previous slot
+        - F3: Looping to insert a score item into top 10 slots by a dispatch action
+        - F3: Receive api request to fetch latest top 10 score items from top 10 slots
