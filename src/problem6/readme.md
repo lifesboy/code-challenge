@@ -38,3 +38,8 @@
         - F2: Dispatch action to update next slot with overwritten item at previous slot
         - F3: Looping to insert a score item into top 10 slots by a dispatch action
         - F4: Receive api request to fetch latest top 10 score items from top 10 slots
+
+### Diagrams
+1. Score Hub
+    - Execution flow: https://drive.google.com/file/d/1QrOzjOcdQU2Uj_d37wZf2g4z7McaQ3XH/view?usp=sharing
+    ![Score Hub Flow](score-hub.jpg)
