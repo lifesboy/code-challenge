@@ -1,0 +1,5 @@
+export const BAD_REQUEST = 'BAD_REQUEST'
+export const UNAUTHORIZED = 'UNAUTHORIZED'
+export const NOT_FOUND = 'NOT_FOUND'
+export const SERVER_ERROR = 'SERVER_ERROR'
+export const UNKNOWN = 'UNKNOWN'

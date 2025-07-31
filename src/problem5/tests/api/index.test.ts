@@ -9,7 +9,7 @@ describe('User API', () => {
     const res = await request(app).post('/api/user')
       .send(userData)
 
-    expect(res.statusCode).toEqual(200)
+    expect(res.statusCode).toEqual(201)
     expect(res.body?.data?.firstName).toEqual(userData.firstName)
     expect(res.body?.data?.lastName).toEqual(userData.lastName)
   })
