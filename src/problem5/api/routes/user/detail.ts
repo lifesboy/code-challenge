@@ -1,11 +1,21 @@
 import {Request, Response, Router} from 'express'
-import * as UserRepository from '../../../repositories/user'
+import {detailUser} from '../../services/user/detail'
+import {handleRouteError, handleRouteResult} from '../../utils'
+import {DetailUserReq} from '../../entities/user/detail/detailUserReq'
 
 
 export const router = Router()
 
 router.get('/:id', async (req: Request, res: Response) => {
-  const user = await UserRepository.getById(+req.params?.id)
+  const options: DetailUserReq = {
+    id: +req.params?.id,
+  }
 
-  res.send({data: user})
+  try {
+    const result = await detailUser(options)
+
+    return await handleRouteResult(res, result)
+  } catch (e) {
+    return await handleRouteError(res, e)
+  }
 })
