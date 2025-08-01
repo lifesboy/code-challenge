@@ -4,15 +4,15 @@ import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
-import * as UserCreateDomainService from '../../../domain/services/user/create'
-import {validateCreateUserReq} from '../../validations/user/create'
-import {CreateUserReq} from '../../entities/user/create/createUserReq'
-import {CreateUserRes} from '../../entities/user/create/createUserRes'
+import * as UserDomainService from '../../../domain/services/user'
+import {validateCreateUserReq} from '../../validations/user'
+import {CreateUserReq} from '../../entities/user/create'
+import {CreateUserRes} from '../../entities/user/create'
 
 
 export async function createUser(options: CreateUserReq): Promise<ApiResponse<CreateUserRes>> {
   const createUserReq = await validateCreateUserReq(options)
-  const createUserRes: CreateUserRes = await UserCreateDomainService.createUser(createUserReq.data)
+  const createUserRes: CreateUserRes = await UserDomainService.createUser(createUserReq.data)
 
   return !!createUserRes
     ? {

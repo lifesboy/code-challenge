@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 import * as MESSAGES from '../../../domain/messages'
-import {CreateUserReq} from '../../entities/user/create/createUserReq'
+import {CreateUserReq} from '../../entities/user/create'
 
 
 export async function validateCreateUserReq(data: CreateUserReq): Promise<CreateUserReq> {

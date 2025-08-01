@@ -1,5 +1,5 @@
 import * as UserRepository from '../../../repositories/user'
-import {UpdateUserData} from '../../entities/user/update/updateUserData'
+import {UpdateUserData} from '../../entities/user'
 
 
 export async function updateUser(id: number, data: UpdateUserData): Promise<UpdateUserData> {

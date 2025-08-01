@@ -1,4 +1,4 @@
-import {CreateUserData} from '../../../../domain/entities/user/create/createUserData'
+import {DetailUserData} from '../../../../domain/entities/user'
 
-export interface DetailUserRes extends Partial<CreateUserData> {
+export interface DetailUserRes extends Partial<DetailUserData> {
 }

@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 import * as MESSAGES from '../../../domain/messages'
-import {SearchUserReq} from "../../entities/user/search/searchUserReq";
+import {SearchUserReq} from '../../entities/user/search'
 
 
 export async function validateSearchUserReq(data: SearchUserReq): Promise<SearchUserReq> {

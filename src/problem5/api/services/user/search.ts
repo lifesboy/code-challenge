@@ -4,15 +4,15 @@ import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
-import * as UserSearchDomainService from '../../../domain/services/user/search'
-import {SearchUserReq} from '../../entities/user/search/searchUserReq'
-import {SearchUserRes} from '../../entities/user/search/searchUserRes'
-import {validateSearchUserReq} from '../../validations/user/search'
+import * as UserDomainService from '../../../domain/services/user'
+import {SearchUserReq} from '../../entities/user/search'
+import {SearchUserRes} from '../../entities/user/search'
+import {validateSearchUserReq} from '../../validations/user'
 
 
 export async function searchUser(options: SearchUserReq): Promise<ApiResponse<SearchUserRes>> {
   const searchUserReq = await validateSearchUserReq(options)
-  const searchUserRes: SearchUserRes = await UserSearchDomainService.searchUser(searchUserReq)
+  const searchUserRes: SearchUserRes = await UserDomainService.searchUser(searchUserReq)
 
   return !!searchUserRes
     ? {

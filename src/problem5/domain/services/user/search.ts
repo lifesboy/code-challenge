@@ -1,6 +1,6 @@
 import * as UserRepository from '../../../repositories/user'
-import {SearchUserData} from '../../entities/user/search/searchUserData'
-import {SearchUserFilter} from '../../entities/user/search/searchUserFilter'
+import {SearchUserData} from '../../entities/user'
+import {SearchUserFilter} from '../../entities/user'
 
 
 export async function searchUser(filter: SearchUserFilter): Promise<SearchUserData> {

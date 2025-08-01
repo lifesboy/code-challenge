@@ -1,3 +1,3 @@
-import {DeleteUserData} from '../../../../domain/entities/user/delete/deleteUserData'
+import {DeleteUserData} from '../../../../domain/entities/user'
 
 export type DeleteUserRes = DeleteUserData

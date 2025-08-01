@@ -1,7 +1,7 @@
 import {Request, Response, Router} from 'express'
-import {searchUser} from '../../services/user/search'
+import {searchUser} from '../../services/user'
 import {handleRouteError, handleRouteResult} from '../../utils'
-import {SearchUserReq} from '../../entities/user/search/searchUserReq'
+import {SearchUserReq} from '../../entities/user/search'
 
 
 export const router = Router()

@@ -1,8 +1,7 @@
 import {Op} from 'sequelize'
-import User from "../models/user.model"
+import User from '../models/user.model'
 import sequelize from '../models'
-import {PageFilter} from "../domain/entities/pageFilter";
-import {SearchUserFilter} from "../domain/entities/user/search/searchUserFilter";
+import {SearchUserFilter} from '../domain/entities/user'
 
 const repository = sequelize.getRepository(User)
 
