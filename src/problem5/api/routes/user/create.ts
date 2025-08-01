@@ -1,12 +1,13 @@
 import {Request, Response, Router} from 'express'
 import {createUser} from '../../services/user/create'
 import {handleRouteError, handleRouteResult} from '../../utils'
+import {CreateUserReq} from '../../entities/user/create/createUserReq'
 
 
 export const router = Router()
 
 router.post('/', async (req: Request, res: Response) => {
-  const options = {
+  const options: CreateUserReq = {
     data: req.body
   }
 

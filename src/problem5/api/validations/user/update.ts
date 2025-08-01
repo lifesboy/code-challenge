@@ -1,10 +1,13 @@
 import * as yup from 'yup'
 import * as MESSAGES from '../../../domain/messages'
-import {CreateUserReq} from '../../entities/user/create/createUserReq'
+import {UpdateUserReq} from '../../entities/user/update/updateUserReq'
 
 
-export async function validateCreateUserReq(data: CreateUserReq): Promise<CreateUserReq> {
+export async function validateUpdateUserReq(options: UpdateUserReq): Promise<UpdateUserReq> {
   const schema = yup.object().shape({
+    id: yup.number()
+      .min(1, MESSAGES.ERROR.INVALID_PARAMS)
+      .required(),
     data: yup.object().shape({
       firstName: yup.string()
         .max(255, MESSAGES.ERROR.INVALID_PARAMS)
@@ -16,5 +19,5 @@ export async function validateCreateUserReq(data: CreateUserReq): Promise<Create
       .required()
   })
 
-  return await schema.validate(data)
+  return await schema.validate(options)
 }

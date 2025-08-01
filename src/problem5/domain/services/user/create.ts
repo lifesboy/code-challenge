@@ -1,7 +1,7 @@
 import * as UserRepository from '../../../repositories/user'
-import User from '../../../models/user.model'
+import {CreateUserData} from '../../entities/user/create/createUserData'
 
 
-export async function createUser(data: Partial<User>): Promise<User> {
+export async function createUser(data: CreateUserData): Promise<CreateUserData> {
   return await UserRepository.create(data)
 }
