@@ -23,6 +23,6 @@ export async function detailUser(options: DetailUserReq): Promise<ApiResponse<De
     : {
       status: STATUSES.ERROR.SERVER_ERROR,
       code: CODES.ERROR.SERVER_ERROR,
-      message: MESSAGES.ERROR.UPDATE_FAIL,
+      message: MESSAGES.ERROR.GET_FAIL,
     } as ErrorResponse<DetailUserRes>
 }
