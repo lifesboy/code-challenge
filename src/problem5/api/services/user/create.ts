@@ -1,18 +1,17 @@
-import * as UserRepository from '../../../repositories/user'
-import User from '../../../models/user.model'
 import {ApiResponse} from '../../entities/apiResponse'
 import {SuccessResponse} from '../../entities/successResponse'
 import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
+import User from '../../../models/user.model'
+import * as UserCreateDomainService from '../../../domain/services/user/create'
+import {validateCreateUserData} from '../../validations/user/create'
 
 
-export async function createUser(options: { data: Partial<User> }): Promise<ApiResponse> {
-  const res = await UserRepository.create({
-    firstName: options.data?.firstName,
-    lastName: options.data?.lastName,
-  })
+export async function createUser(options: { data: object }): Promise<ApiResponse> {
+  const createUserData = await validateCreateUserData(options.data)
+  const res = await UserCreateDomainService.createUser(createUserData)
 
   return !!res
     ? {

@@ -6,13 +6,12 @@ import {handleRouteError, handleRouteResult} from '../../utils'
 export const router = Router()
 
 router.post('/', async (req: Request, res: Response) => {
+  const options = {
+    data: req.body
+  }
+
   try {
-    const result = await createUser({
-      data: {
-        firstName: req.body?.firstName,
-        lastName: req.body?.lastName,
-      }
-    })
+    const result = await createUser(options)
 
     return await handleRouteResult(res, result)
   } catch (e) {
