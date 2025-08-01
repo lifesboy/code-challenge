@@ -4,15 +4,15 @@ import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
-import * as UserUpdateDomainService from '../../../domain/services/user/update'
-import {validateUpdateUserReq} from '../../validations/user/update'
-import {UpdateUserReq} from '../../entities/user/update/updateUserReq'
-import {UpdateUserRes} from "../../entities/user/update/updateUserRes";
+import * as UserDomainService from '../../../domain/services/user'
+import {validateUpdateUserReq} from '../../validations/user'
+import {UpdateUserReq} from '../../entities/user'
+import {UpdateUserRes} from '../../entities/user'
 
 
 export async function updateUser(options: UpdateUserReq): Promise<ApiResponse<UpdateUserRes>> {
   const updateUserReq = await validateUpdateUserReq(options)
-  const updateUserRes = await UserUpdateDomainService.updateUser(updateUserReq.id, updateUserReq.data)
+  const updateUserRes = await UserDomainService.updateUser(updateUserReq.id, updateUserReq.data)
 
   return !!updateUserRes
     ? {

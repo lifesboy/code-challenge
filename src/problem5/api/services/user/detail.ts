@@ -4,15 +4,15 @@ import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
-import * as UserDetailDomainService from '../../../domain/services/user/detail'
-import {validateDetailUserReq} from '../../validations/user/detail'
-import {DetailUserReq} from '../../entities/user/detail/detailUserReq'
-import {DetailUserRes} from '../../entities/user/detail/detailUserRes'
+import * as UserDomainService from '../../../domain/services/user'
+import {validateDetailUserReq} from '../../validations/user'
+import {DetailUserReq} from '../../entities/user/detail'
+import {DetailUserRes} from '../../entities/user/detail'
 
 
 export async function detailUser(options: DetailUserReq): Promise<ApiResponse<DetailUserRes>> {
   const detailUserReq = await validateDetailUserReq(options)
-  const detailUserRes = await UserDetailDomainService.detailUser(detailUserReq.id)
+  const detailUserRes = await UserDomainService.detailUser(detailUserReq.id)
 
   return !!detailUserRes
     ? {

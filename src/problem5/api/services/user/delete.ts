@@ -4,15 +4,15 @@ import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
-import * as UserDeleteDomainService from '../../../domain/services/user/delete'
-import {validateDeleteUserReq} from '../../validations/user/delete'
-import {DeleteUserReq} from '../../entities/user/delete/deleteUserReq'
-import {DeleteUserRes} from '../../entities/user/delete/deleteUserRes'
+import * as UserDomainService from '../../../domain/services/user'
+import {validateDeleteUserReq} from '../../validations/user'
+import {DeleteUserReq} from '../../entities/user/delete'
+import {DeleteUserRes} from '../../entities/user/delete'
 
 
 export async function deleteUser(options: DeleteUserReq): Promise<ApiResponse<DeleteUserRes>> {
   const deleteUserReq = await validateDeleteUserReq(options)
-  const deleteUserRes = await UserDeleteDomainService.deleteUser(deleteUserReq.id)
+  const deleteUserRes = await UserDomainService.deleteUser(deleteUserReq.id)
 
   return !!deleteUserRes
     ? {

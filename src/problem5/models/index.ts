@@ -15,3 +15,4 @@ const sequelize = new Sequelize({
 })
 
 export default sequelize
+export * from './user.model'

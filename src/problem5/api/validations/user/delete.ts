@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 import * as MESSAGES from '../../../domain/messages'
-import {DeleteUserReq} from '../../entities/user/delete/deleteUserReq'
+import {DeleteUserReq} from '../../entities/user/delete'
 
 
 export async function validateDeleteUserReq(options: DeleteUserReq): Promise<DeleteUserReq> {

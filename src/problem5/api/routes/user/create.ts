@@ -1,7 +1,7 @@
 import {Request, Response, Router} from 'express'
-import {createUser} from '../../services/user/create'
+import {createUser} from '../../services/user'
 import {handleRouteError, handleRouteResult} from '../../utils'
-import {CreateUserReq} from '../../entities/user/create/createUserReq'
+import {CreateUserReq} from '../../entities/user/create'
 
 
 export const router = Router()

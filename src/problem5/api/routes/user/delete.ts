@@ -1,7 +1,7 @@
 import {Request, Response, Router} from 'express'
-import {deleteUser} from '../../services/user/delete'
+import {deleteUser} from '../../services/user'
 import {handleRouteError, handleRouteResult} from '../../utils'
-import {DeleteUserReq} from '../../entities/user/delete/deleteUserReq'
+import {DeleteUserReq} from '../../entities/user/delete'
 
 
 export const router = Router()
