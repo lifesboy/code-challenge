@@ -1,11 +1,21 @@
 import {Request, Response, Router} from 'express'
-import * as UserRepository from '../../../repositories/user'
+import {deleteUser} from '../../services/user/delete'
+import {handleRouteError, handleRouteResult} from '../../utils'
+import {DeleteUserReq} from '../../entities/user/delete/deleteUserReq'
 
 
 export const router = Router()
 
 router.delete('/:id', async (req: Request, res: Response) => {
-  const deletedCount = await UserRepository.deleteById(+req.params?.id)
+  const options: DeleteUserReq = {
+    id: +req.params?.id,
+  }
 
-  res.send({data: deletedCount > 0})
+  try {
+    const result = await deleteUser(options)
+
+    return await handleRouteResult(res, result)
+  } catch (e) {
+    return await handleRouteError(res, e)
+  }
 })
