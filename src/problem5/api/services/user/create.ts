@@ -4,24 +4,25 @@ import {ErrorResponse} from '../../entities/errorResponse'
 import * as MESSAGES from '../../../domain/messages'
 import * as CODES from '../../../domain/codes'
 import * as STATUSES from '../../../domain/statuses'
-import User from '../../../models/user.model'
 import * as UserCreateDomainService from '../../../domain/services/user/create'
-import {validateCreateUserData} from '../../validations/user/create'
+import {validateCreateUserReq} from '../../validations/user/create'
+import {CreateUserReq} from '../../entities/user/create/createUserReq'
+import {CreateUserRes} from '../../entities/user/create/createUserRes'
 
 
-export async function createUser(options: { data: object }): Promise<ApiResponse> {
-  const createUserData = await validateCreateUserData(options.data)
-  const res = await UserCreateDomainService.createUser(createUserData)
+export async function createUser(options: CreateUserReq): Promise<ApiResponse<CreateUserRes>> {
+  const createUserReq = await validateCreateUserReq(options)
+  const createUserRes: CreateUserRes = await UserCreateDomainService.createUser(createUserReq.data)
 
-  return !!res
+  return !!createUserRes
     ? {
       status: STATUSES.SUCCESS.CREATED,
       code: CODES.SUCCESS.CREATED,
-      data: res,
-    } as SuccessResponse<User>
+      data: createUserRes as CreateUserRes,
+    } as SuccessResponse<CreateUserRes>
     : {
       status: STATUSES.ERROR.SERVER_ERROR,
       code: CODES.ERROR.SERVER_ERROR,
       message: MESSAGES.ERROR.CREATE_FAIL,
-    } as ErrorResponse
+    } as ErrorResponse<CreateUserRes>
 }
