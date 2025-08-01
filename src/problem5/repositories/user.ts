@@ -1,6 +1,8 @@
 import {Op} from 'sequelize'
 import User from "../models/user.model"
 import sequelize from '../models'
+import {PageFilter} from "../domain/entities/pageFilter";
+import {SearchUserFilter} from "../domain/entities/user/search/searchUserFilter";
 
 const repository = sequelize.getRepository(User)
 
@@ -25,9 +27,9 @@ export async function deleteById(id: number) {
   })
 }
 
-export async function search(filter?: { keyword?: string }, paging?: { page: number, limit: number }) {
-  const limit = paging?.limit ?? 100
-  const offset = (paging?.page || 0) * limit
+export async function search(filter?: SearchUserFilter) {
+  const limit = filter?.limit ?? 100
+  const offset = (filter?.page || 0) * limit
   const where = !!filter?.keyword ? {
     [Op.or]: [
       {firstName: {[Op.like]: `%${filter?.keyword}%`}},

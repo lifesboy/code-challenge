@@ -1,17 +1,23 @@
 import {Request, Response, Router} from 'express'
-import * as UserRepository from '../../../repositories/user'
+import {searchUser} from '../../services/user/search'
+import {handleRouteError, handleRouteResult} from '../../utils'
+import {SearchUserReq} from '../../entities/user/search/searchUserReq'
 
 
 export const router = Router()
 
 router.get('/', async (req: Request, res: Response) => {
-  const keyword = `${req.query?.keyword || ''}`
-  const searchResults = await UserRepository.search({keyword})
+  const options: SearchUserReq = {
+    keyword: `${req.query?.keyword || ''}`,
+    page: +`${req.query?.page}` || 0,
+    limit: +`${req.query?.limit}` || 100,
+  }
 
-  res.send({
-    data: {
-      count: searchResults?.count || 0,
-      rows: searchResults?.rows || [],
-    }
-  })
+  try {
+    const result = await searchUser(options)
+
+    return await handleRouteResult(res, result)
+  } catch (e) {
+    return await handleRouteError(res, e)
+  }
 })
