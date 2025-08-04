@@ -1,0 +1,5 @@
+include:
+  - config/docker-compose.yml
+  - vpc/docker-compose.yml
+  - problem5-database/docker-compose.yml
+#  - problem5-service/docker-compose.yml

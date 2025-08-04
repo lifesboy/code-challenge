@@ -1,0 +1,3 @@
+secrets:
+  database.json:
+    file: ${CONFIG_PATH}/secrets/database.json

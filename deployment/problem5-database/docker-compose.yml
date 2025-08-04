@@ -1,0 +1,29 @@
+services:
+  problem5-database:
+    image: 'postgres:16'
+    ports:
+      - 5432:5432
+    env_file:
+      - ${CONFIG_PATH}/envs/problem5-database.env
+    networks:
+      - problem5-database-network
+    volumes:
+      - ${PWD}/db-data/:/var/lib/postgresql/data/
+
+  problem5-database-admin:
+    image: dpage/pgadmin4
+    ports:
+      - 5433:80
+    env_file:
+      - ${CONFIG_PATH}/envs/problem5-database-admin.env
+    depends_on:
+      - problem5-database
+    networks:
+      - problem5-database-network
+    volumes:
+      - ${PWD}/pgadmin-data/:/var/lib/pgadmin/
+
+volumes:
+  problem5-database: {}
+  service-user-db-slave-data: {}
+  service-user-db-slave2-data: {}
