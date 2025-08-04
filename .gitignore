@@ -3,3 +3,6 @@
 /coverage
 /db-data
 /pgadmin-data
+/src/problem5/**/*.d.ts
+/src/problem5/**/*.js
+*.tsbuildinfo
