@@ -1,3 +1,6 @@
+configs:
+  problem5-database-master.conf:
+    file: ${CONFIG_PATH}/configs/problem5-database-master.conf
 secrets:
   database.json:
     file: ${CONFIG_PATH}/secrets/database.json

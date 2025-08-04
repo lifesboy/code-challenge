@@ -1,14 +1,17 @@
 services:
   problem5-database:
-    image: 'postgres:16'
+    image: 'bitnami/postgresql:16.3.0'
     ports:
       - 5432:5432
     env_file:
       - ${CONFIG_PATH}/envs/problem5-database.env
+    configs:
+      - source: problem5-database-master.conf
+        target: /opt/bitnami/postgresql/conf/postgresql-master.conf
     networks:
       - problem5-database-network
     volumes:
-      - ${PWD}/db-data/:/var/lib/postgresql/data/
+      - problem5-database-master-data:/bitnami/postgresql
 
   problem5-database-admin:
     image: dpage/pgadmin4
@@ -24,6 +27,4 @@ services:
       - ${PWD}/pgadmin-data/:/var/lib/pgadmin/
 
 volumes:
-  problem5-database: {}
-  service-user-db-slave-data: {}
-  service-user-db-slave2-data: {}
+  problem5-database-master-data: {}
