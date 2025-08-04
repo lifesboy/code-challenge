@@ -5,7 +5,7 @@
 
 ## Run database:
 ```
-docker compose -f src/problem5/docker-compose.yml up --force-recreate
+docker compose -f deployment/docker-compose.yml up --force-recreate
 ```
 ## Run app server:
 ```
