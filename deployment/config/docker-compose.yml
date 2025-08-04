@@ -1,0 +1,11 @@
+configs:
+  problem5-database-master.conf:
+    file: ${CONFIG_PATH}/configs/problem5-database-master.conf
+  problem5-database-slave1.conf:
+    file: ${CONFIG_PATH}/configs/problem5-database-slave1.conf
+  problem5-database-slave2.conf:
+    file: ${CONFIG_PATH}/configs/problem5-database-slave2.conf
+
+secrets:
+  database.json:
+    file: ${CONFIG_PATH}/secrets/database.json
