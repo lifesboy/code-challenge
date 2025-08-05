@@ -1,0 +1,21 @@
+{
+  "name": "@problem5/api",
+  "version": "1.0.0",
+  "description": "Problem5 (@api)",
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "@problem5/domain": "1.0.0"
+  },
+  "peerDependencies": {
+    "express": "^5.1.0"
+  },
+  "peerDependenciesMeta": {
+  }
+}

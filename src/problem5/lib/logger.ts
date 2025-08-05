@@ -1,9 +1,9 @@
 import * as bunyan from 'bunyan'
-import Logger, {Stream} from 'bunyan'
+import {Stream} from 'bunyan'
 import {config, LoggerConfig} from './config'
 
 
-const createLogger = (config: LoggerConfig): Logger => {
+const createLogger = (config: LoggerConfig) => {
   const bunyanConfig = [] as Stream[]
   const levels = Object.keys(config.levels)
 

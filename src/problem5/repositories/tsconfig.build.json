@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": ".",
+    "rootDir": ".",
+    "paths": {
+      "@problem5/models": ["../models"],
+      "@problem5/models/*": ["../models/*"],
+      "@problem5/lib": ["../lib"],
+      "@problem5/lib/*": ["../lib/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "test/**/*", "*.spec.ts"],
+  "references": [
+    {
+      "path": "../models/tsconfig.build.json"
+    },
+    {
+      "path": "../lib/tsconfig.build.json"
+    }
+  ]
+}

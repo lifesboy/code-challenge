@@ -1,0 +1,31 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./api/tsconfig.build.json"
+    },
+    {
+      "path": "./bin/tsconfig.build.json"
+    },
+    {
+      "path": "./db/tsconfig.build.json"
+    },
+    {
+      "path": "./domain/tsconfig.build.json"
+    },
+    {
+      "path": "./lib/tsconfig.build.json"
+    },
+    {
+      "path": "./models/tsconfig.build.json"
+    },
+    {
+      "path": "./repositories/tsconfig.build.json"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": ".",
+    "rootDir": ".",
+    "paths": {
+      "@problem5/api": ["../api"],
+      "@problem5/api/*": ["../api/*"],
+      "@problem5/lib": ["../lib"],
+      "@problem5/lib/*": ["../lib/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "test/**/*", "*.spec.ts"],
+  "references": [
+    {
+      "path": "../api/tsconfig.build.json"
+    },
+    {
+      "path": "../lib/tsconfig.build.json"
+    }
+  ]
+}

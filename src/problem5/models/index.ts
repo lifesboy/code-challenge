@@ -15,4 +15,5 @@ const sequelize = new Sequelize({
 })
 
 export default sequelize
+export * from './dto'
 export * from './user.model'

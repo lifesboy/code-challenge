@@ -1,0 +1,21 @@
+{
+  "name": "@problem5/models",
+  "version": "1.0.0",
+  "description": "Problem5 (@models)",
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "2.8.1"
+  },
+  "peerDependencies": {
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6"
+  },
+  "peerDependenciesMeta": {
+  }
+}

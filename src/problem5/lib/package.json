@@ -1,0 +1,19 @@
+{
+  "name": "@problem5/lib",
+  "version": "1.0.0",
+  "description": "Problem5 (@lib)",
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tslib": "2.8.1"
+  },
+  "peerDependencies": {
+    "bunyan": "^1.8.15",
+    "node-yaml-config": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+  }
+}

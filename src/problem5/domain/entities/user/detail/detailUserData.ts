@@ -1,3 +1,5 @@
 import User from '../../../../models/user.model'
 
-export type DetailUserData = Partial<User> | null
+export interface DetailUserData extends Partial<User> {
+
+}
