@@ -1,6 +1,7 @@
 import request from 'supertest'
 import {app} from '../../bin/www'
 import * as _ from 'lodash'
+import {expect} from 'chai'
 
 describe('User API', () => {
   const userData = {firstName: 'firstName', lastName: 'lastName'}
@@ -9,16 +10,16 @@ describe('User API', () => {
     const res = await request(app).post('/api/user')
       .send(userData)
 
-    expect(res.statusCode).toEqual(201)
-    expect(res.body?.data?.firstName).toEqual(userData.firstName)
-    expect(res.body?.data?.lastName).toEqual(userData.lastName)
+    expect(res.statusCode).to.equal(201)
+    expect(res.body?.data?.firstName).to.equal(userData.firstName)
+    expect(res.body?.data?.lastName).to.equal(userData.lastName)
   })
 
   it('should get filtered users', async () => {
     const userRes = await request(app).post('/api/user')
       .send(userData)
     const userId = +userRes.body?.data?.id
-    expect(userId).toBeGreaterThan(0)
+    expect(userId).to.greaterThan(0)
 
     const res = await request(app).get('/api/user/search')
       .query({keyword: userData.firstName})
@@ -27,29 +28,28 @@ describe('User API', () => {
       (i: any) => (i.firstName?.indexOf(userData.firstName) >= 0)
         || (i.lastName?.indexOf(userData.firstName) >= 0))
 
-    expect(res.statusCode).toEqual(200)
-    expect(res.body?.data?.count).toBeGreaterThan(0)
-    expect(res.body?.data?.rows).toBeTruthy()
-    expect(res.body?.data?.rows).toEqual(filteredRows)
+    expect(res.statusCode).to.equal(200)
+    expect(res.body?.data?.count).to.greaterThan(0)
+    expect(res.body?.data?.rows).to.equal(filteredRows)
   })
 
   it('should get detail user', async () => {
     const userRes = await request(app).post('/api/user')
       .send(userData)
     const userId = +userRes.body?.data?.id
-    expect(userId).toBeGreaterThan(0)
+    expect(userId).to.greaterThan(0)
 
     const res = await request(app).get(`/api/user/${userId}`)
 
-    expect(res.statusCode).toEqual(200)
-    expect(res.body?.data?.id).toEqual(userId)
+    expect(res.statusCode).to.equal(200)
+    expect(res.body?.data?.id).to.equal(userId)
   })
 
   it('should update existed user', async () => {
     const userRes = await request(app).post('/api/user')
       .send(userData)
     const userId = +userRes.body?.data?.id
-    expect(userId).toBeGreaterThan(0)
+    expect(userId).to.greaterThan(0)
 
     const updateUserData = {
       ...userData,
@@ -59,20 +59,20 @@ describe('User API', () => {
     const res = await request(app).put(`/api/user/${userId}`)
       .send(updateUserData)
 
-    expect(res.statusCode).toEqual(200)
-    expect(res.body?.data?.id).toEqual(userId)
-    expect(res.body?.data?.firstName).toEqual(updateUserData.firstName)
-    expect(res.body?.data?.lastName).toEqual(updateUserData.lastName)
+    expect(res.statusCode).to.equal(200)
+    expect(res.body?.data?.id).to.equal(userId)
+    expect(res.body?.data?.firstName).to.equal(updateUserData.firstName)
+    expect(res.body?.data?.lastName).to.equal(updateUserData.lastName)
   })
 
   it('should delete existed user', async () => {
     const userRes = await request(app).post('/api/user')
       .send(userData)
     const userId = +userRes.body?.data?.id
-    expect(userId).toBeGreaterThan(0)
+    expect(userId).to.greaterThan(0)
 
     const res = await request(app).delete(`/api/user/${userId}`)
-    expect(res.statusCode).toEqual(200)
-    expect(res.body?.data).toEqual(true)
+    expect(res.statusCode).to.equal(200)
+    expect(res.body?.data).to.equal(true)
   })
 })
