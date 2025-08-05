@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 import {app as api} from '../api'
-import http from 'node:http'
+import * as http from 'node:http'
 import {config} from '../lib/config'
 import {log} from '../lib/logger'
 import {AddressInfo} from 'net'
