@@ -1,5 +1,5 @@
 import * as request from 'supertest'
-import {app} from '../../bin/www'
+import {app} from '@problem5/bin/www'
 import * as _ from 'lodash'
 import {expect} from 'chai'
 

@@ -5,14 +5,14 @@
   "scripts": {
     "tsc": "tsc --init",
     "build": "tsc -b -v src/problem5",
-    "test": "mocha src/**/*.spec.ts",
-    "test:cov": "nyc mocha src/**/*.spec.ts --reporter spec",
+    "test": "mocha tests/**/*.spec.ts",
+    "test:cov": "nyc mocha tests/**/*.spec.ts --reporter spec",
     "problem4": "ts-node src/problem4/main.ts",
     "problem5:build": "tsc src/problem5/db/migrations/*.ts --outDir src/problem5/db/migrations/compiled",
     "problem5:migrate": "npm run problem5:build && npx sequelize-cli-typescript db:migrate",
     "problem5:migrate:undo:all": "npm run problem5:build && npx sequelize-cli-typescript db:migrate:undo:all",
     "problem5:clean": "npm run problem5:migrate:undo:all",
-    "problem5:test": "npm run problem5:migrate && mocha src/problem5/**/*.spec.ts && npm run problem5:migrate:undo:all",
+    "problem5:test": "npm run problem5:migrate && mocha tests/problem5/**/*.spec.ts && npm run problem5:migrate:undo:all",
     "problem5:run": "npm run problem5:migrate && ts-node src/problem5/bin/www.ts",
     "problem5:clean:test:run": "npm run problem5:clean && npm run problem5:test && npm run problem5:run"
   },
@@ -82,7 +82,7 @@
       "ts-node/register",
       "tsconfig-paths/register",
       "node_modules/reflect-metadata/Reflect.js",
-      "src/problem5/tests/mocha-init-hook.ts"
+      "tests/mocha-init-hook.ts"
     ],
     "exit": true
   }
