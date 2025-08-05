@@ -1,7 +1,7 @@
 import {Op} from 'sequelize'
 import User from '../models/user.model'
 import sequelize from '../models'
-import {SearchUserFilter} from '../domain/entities/user'
+import {UserFilter} from '../models/dto/userFilter'
 
 const repository = sequelize.getRepository(User)
 
@@ -26,7 +26,7 @@ export async function deleteById(id: number) {
   })
 }
 
-export async function search(filter?: SearchUserFilter) {
+export async function search(filter?: UserFilter) {
   const limit = filter?.limit ?? 100
   const offset = (filter?.page || 0) * limit
   const where = !!filter?.keyword ? {
