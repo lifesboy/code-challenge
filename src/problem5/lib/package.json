@@ -1,7 +1,7 @@
 {
-  "name": "@problem5/api",
+  "name": "@problem5/lib",
   "version": "1.0.0",
-  "description": "Problem5 (@api)",
+  "description": "Problem5 (@lib)",
   "author": "",
   "license": "ISC",
   "publishConfig": {
@@ -10,11 +10,9 @@
   "dependencies": {
     "tslib": "2.8.1"
   },
-  "devDependencies": {
-    "@problem5/domain": "1.0.0"
-  },
   "peerDependencies": {
-    "express": "^5.1.0"
+    "bunyan": "^1.8.15",
+    "node-yaml-config": "^1.0.0"
   },
   "peerDependenciesMeta": {
   }

@@ -6,6 +6,8 @@
     "paths": {
       "@problem5/models": ["../models"],
       "@problem5/models/*": ["../models/*"],
+      "@problem5/domain": ["../domain"],
+      "@problem5/domain/*": ["../domain/*"],
       "@problem5/lib": ["../lib"],
       "@problem5/lib/*": ["../lib/*"]
     }
@@ -14,6 +16,9 @@
   "references": [
     {
       "path": "../models/tsconfig.build.json"
+    },
+    {
+      "path": "../domain/tsconfig.build.json"
     },
     {
       "path": "../lib/tsconfig.build.json"

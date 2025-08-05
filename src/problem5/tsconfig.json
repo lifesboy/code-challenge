@@ -13,9 +13,6 @@
       "path": "./bin/tsconfig.build.json"
     },
     {
-      "path": "./config/tsconfig.build.json"
-    },
-    {
       "path": "./db/tsconfig.build.json"
     },
     {
