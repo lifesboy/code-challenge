@@ -6,3 +6,4 @@
 /src/problem5/**/*.d.ts
 /src/problem5/**/*.js
 *.tsbuildinfo
+/.nyc_output

@@ -6,6 +6,7 @@
     "tsc": "tsc --init",
     "build": "tsc -b -v src/problem5",
     "test": "mocha src/**/*.spec.ts",
+    "test:cov": "nyc mocha src/**/*.spec.ts --reporter spec",
     "problem4": "ts-node src/problem4/main.ts",
     "problem5:build": "tsc src/problem5/db/migrations/*.ts --outDir src/problem5/db/migrations/compiled",
     "problem5:migrate": "npm run problem5:build && npx sequelize-cli-typescript db:migrate",
@@ -33,11 +34,13 @@
     "chai": "^5.2.1",
     "chai-as-promised": "^8.0.1",
     "mocha": "^11.7.1",
+    "nyc": "^17.1.0",
     "sequelize-cli-typescript": "^3.2.0-c",
     "sinon": "^21.0.0",
     "sinon-chai": "^4.0.0",
     "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
@@ -51,5 +54,36 @@
     "sequelize-typescript": "^2.1.6",
     "tslib": "2.8.1",
     "yup": "^1.6.1"
+  },
+  "nyc": {
+    "include": [
+      "src/problem5/**/*.ts"
+    ],
+    "exclude": [
+      "**/*.js",
+      "**/*.d.ts",
+      "**/*.spec.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "mocha": {
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register",
+      "node_modules/reflect-metadata/Reflect.js",
+      "src/problem5/tests/mocha-init-hook.ts"
+    ],
+    "exit": true
   }
 }

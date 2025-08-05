@@ -1,4 +1,4 @@
-import request from 'supertest'
+import * as request from 'supertest'
 import {app} from '../../bin/www'
 import * as _ from 'lodash'
 import {expect} from 'chai'
@@ -30,7 +30,7 @@ describe('User API', () => {
 
     expect(res.statusCode).to.equal(200)
     expect(res.body?.data?.count).to.greaterThan(0)
-    expect(res.body?.data?.rows).to.equal(filteredRows)
+    expect(res.body?.data?.rows).to.deep.equal(filteredRows)
   })
 
   it('should get detail user', async () => {
