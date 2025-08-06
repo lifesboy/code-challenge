@@ -7,3 +7,4 @@
 /src/problem5/**/*.js
 *.tsbuildinfo
 /.nyc_output
+/dist
